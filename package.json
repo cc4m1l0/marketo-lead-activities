@@ -1,0 +1,34 @@
+{
+  "name": "marketo-lead-activities",
+  "version": "1.0.0",
+  "description": "Service to consume the marketo REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cc4m1l0/marketo-lead-activities.git"
+  },
+  "keywords": [
+    "marketo",
+    "rest",
+    "api",
+    "lead",
+    "activity"
+  ],
+  "author": "c4m1l0",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cc4m1l0/marketo-lead-activities/issues"
+  },
+  "homepage": "https://github.com/cc4m1l0/marketo-lead-activities#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "config": "^2.0.1",
+    "express": "^4.16.3",
+    "request": "^2.88.0",
+    "save": "^2.3.2"
+  }
+}
