@@ -1,8 +1,8 @@
 var request = require('request');
 const config = require('config');
-const readActivityTypes = (callback) => {
+const readActivityTypes = (apiaccesstoken, callback) => {
     const URL = config.get('MARKETO_API') + config.get('MARKETO_API_VERSION') + config.get('ACTIVITY_TYPES_ENDPOINT') +
-    "?access_token=" + config.get('MARKETO_API_ACCESS_TOKEN');
+    "?access_token=" + apiaccesstoken;
     request.get(URL, (error, response, body) => {
         if(error) {
             return console.dir(error);
@@ -13,7 +13,7 @@ const readActivityTypes = (callback) => {
 };
 
 module.exports = {
-    readActivityTypes: function (callback) {
-        readActivityTypes(callback);
+    readActivityTypes: function (apiaccesstoken, callback) {
+        readActivityTypes(apiaccesstoken, callback);
     }
 };
