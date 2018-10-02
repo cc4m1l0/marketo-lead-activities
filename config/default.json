@@ -4,6 +4,7 @@
     "MARKETO_API_VERSION": "v1/",
     "MARKETO_CLIENT_ID": "c280805f-3e60-472e-9727-ac9f3ca8e549",
     "MARKETO_CLIENT_SECRET": "XLdaQqgYrsrcTtKPQW101CwnYodM2kDr",
+    "LEAD_ENDPOINT": "leads.json",
     "ACTIVITY_ENDPOINT": "activities.json",
     "ACTIVITY_TYPES_ENDPOINT": "activities/types.json",
     "ACTIVITY_NEXTPAGETOKEN_ENDPOINT": "activities/pagingtoken.json",

@@ -33,8 +33,7 @@ const getLastActivityName = (activityTypes, lastActivity) => {
     return _lastActivity[0].name;
 }
 
-
-const readLeadLastActivity = (apiaccesstoken, activityTypes, callback) => {
+const readLeadLastActivity = (apiaccesstoken, activityTypes, leadID, callback) => {
     getNextPageToken(apiaccesstoken, function(nextPageToken) {
         const _activityTypes = activityTypes.result;
         const activityTypesNumber = _activityTypes.length;
@@ -56,7 +55,7 @@ const readLeadLastActivity = (apiaccesstoken, activityTypes, callback) => {
             const URL = config.get('MARKETO_API') + config.get('MARKETO_API_VERSION') + config.get('ACTIVITY_ENDPOINT') +
             "?access_token=" + apiaccesstoken +
             "&nextPageToken=" + nextPageToken +
-            "&leadIds=6" + 
+            "&leadIds=" + leadID + 
             "&activityTypeIds=" + activityTypeIds;
             request.get(URL, (error, response, body) => {
                 if(error) {
@@ -86,7 +85,7 @@ const readLeadLastActivity = (apiaccesstoken, activityTypes, callback) => {
 };
 
 module.exports = {
-    readLeadLastActivity: function (apiaccesstoken, activityTypes, callback) {
-        readLeadLastActivity(apiaccesstoken, activityTypes, callback);
+    readLeadLastActivity: function (apiaccesstoken, activityTypes, leadID, callback) {
+        readLeadLastActivity(apiaccesstoken, activityTypes, leadID, callback);
     }
 };
