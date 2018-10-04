@@ -24,7 +24,7 @@ module.exports = (apiaccesstoken, campaignID, leadID, tokens, leadLastActivityNa
     campaignID + "/trigger.json?access_token=" + apiaccesstoken;
     _leadIDs = buildLeadIDsObject(leadID);
     _tokens = buildTokensObject(tokens, leadLastActivityName);
-    var data = '{ "input":{"leads":['+ _leadIDs +'],"tokens":['+ _tokens +"]}}";
+    var data = '{ "input":{"leads":['+ _leadIDs +'],"tokens":[]}}"';
     var json_obj = data;
     console.log(json_obj);
     request.post({
