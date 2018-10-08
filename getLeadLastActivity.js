@@ -42,7 +42,7 @@ const readLeadLastActivity = (apiaccesstoken, activityTypes, leadID, callback) =
         var numberOfIdsPerCall = 10
         var activities = [];
         var completed_requests = 0;
-        var number_of_requests = Math.floor(activityTypesNumber/numberOfIdsPerCall) + 1;
+        var number_of_requests = Math.floor(activityTypesNumber/numberOfIdsPerCall);
         for(var i = 0; i < number_of_requests; i++) {
             var start, end;
             start = i * numberOfIdsPerCall;

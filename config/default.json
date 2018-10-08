@@ -1,9 +1,9 @@
 {
-    "MARKETO_INSTANCE": "https://085-TAA-111.mktorest.com/",
-    "MARKETO_API": "https://085-TAA-111.mktorest.com/rest/",
+    "MARKETO_INSTANCE": "https://562-ZPO-907.mktorest.com/",
+    "MARKETO_API": "https://562-ZPO-907.mktorest.com/rest/",
     "MARKETO_API_VERSION": "v1/",
-    "MARKETO_CLIENT_ID": "c280805f-3e60-472e-9727-ac9f3ca8e549",
-    "MARKETO_CLIENT_SECRET": "XLdaQqgYrsrcTtKPQW101CwnYodM2kDr",
+    "MARKETO_CLIENT_ID": "ff6211e3-607c-42d6-bda2-fb5dd7567fbd",
+    "MARKETO_CLIENT_SECRET": "Ui93whHB8WZT6qnlsWBEug1TP3ftxOTk",
     "LEAD_ENDPOINT": "leads.json",
     "ACTIVITY_ENDPOINT": "activities.json",
     "ACTIVITY_TYPES_ENDPOINT": "activities/types.json",
