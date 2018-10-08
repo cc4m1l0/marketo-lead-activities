@@ -21,7 +21,7 @@ const getActivityTypesIds = (activityTypes, start, end) => {
         typeid = jsonresult[i]["id"];
         typeids.push(typeid);
     }
-    console.log("Type Ids" + typeids);
+    // console.log("Type Ids" + typeids);
     return typeids;
 }
 
@@ -72,10 +72,10 @@ const readLeadLastActivity = (apiaccesstoken, activityTypes, leadID, callback) =
                 completed_requests++;
                 if (completed_requests == number_of_requests) {
                     // All download done, process responses array
-                    console.dir("list of activities: " + activities);
+                    // console.dir("list of activities: " + activities);
                     const sorted_by_date_activities = activities.sort( (a,b) => a.activityDate < b.activityDate );
                     const lastActivity = sorted_by_date_activities[0];
-                    console.dir("sorted by date activities: " + sorted_by_date_activities);
+                    // console.dir("sorted by date activities: " + sorted_by_date_activities);
                     const lastActivityName = getLastActivityName(activityTypes, lastActivity);
                     // console.dir("Last activity type name: " + lastActivityName);
                     callback(lastActivityName)
