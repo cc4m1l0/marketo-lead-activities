@@ -2,8 +2,9 @@ var request = require('request');
 const config = require('config');
 
 const getNextPageToken = (apiaccesstoken, callback) =>  {
+    var sinceDatetime = new Date(Date.now() - 604800000);
     const URL = config.get('MARKETO_API') + config.get('MARKETO_API_VERSION') + config.get('ACTIVITY_NEXTPAGETOKEN_ENDPOINT') +
-    "?access_token=" + apiaccesstoken + "&sinceDatetime=2014-10-06T13:22:17-08:00";
+    "?access_token=" + apiaccesstoken + "&sinceDatetime=" + sinceDatetime.toISOString();
     request.get(URL, (error, response, body) => {
         if(error) {
             return console.dir(error);
@@ -72,8 +73,12 @@ const readLeadLastActivity = (apiaccesstoken, activityTypes, leadID, callback) =
                 completed_requests++;
                 if (completed_requests == number_of_requests) {
                     // All download done, process responses array
-                    // console.dir("list of activities: " + activities);
-                    const sorted_by_date_activities = activities.sort( (a,b) => a.activityDate < b.activityDate );
+                    // console.dir("list of activities: " + JSON.stringify(activities) );
+                    const sorted_by_date_activities = activities.sort(function(a, b) {
+                        a = new Date(a.activityDate);
+                        b = new Date(b.activityDate);
+                        return a>b ? -1 : a<b ? 1 : 0;
+                    });
                     const lastActivity = sorted_by_date_activities[0];
                     // console.dir("sorted by date activities: " + sorted_by_date_activities);
                     const lastActivityName = getLastActivityName(activityTypes, lastActivity);
