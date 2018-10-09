@@ -82,8 +82,10 @@ const readLeadLastActivity = (apiaccesstoken, activityTypes, leadID, callback) =
                     const lastActivity = sorted_by_date_activities[0];
                     // console.dir("sorted by date activities: " + sorted_by_date_activities);
                     const lastActivityName = getLastActivityName(activityTypes, lastActivity);
+                    const lastActivityDescription = lastActivity.primaryAttributeValue;
                     // console.dir("Last activity type name: " + lastActivityName);
-                    callback(lastActivityName)
+                    // console.dir("Last activity type description: " + lastActivityDescription);
+                    callback(lastActivityName, lastActivityDescription);
                 }
             });
         }

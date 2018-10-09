@@ -10,9 +10,9 @@ module.exports = (req, res) => {
     auth.getAuthToken(function(apiaccesstoken) {
         getActivityType.readActivityTypes(apiaccesstoken, function(activitytypes) {
             getLeadID.getLeadIdByEmail(apiaccesstoken, leadEmail, function(leadID) {
-                getLeadLastActivity.readLeadLastActivity(apiaccesstoken, activitytypes, leadID, function(leadLastActivityName) {
+                getLeadLastActivity.readLeadLastActivity(apiaccesstoken, activitytypes, leadID, function(leadLastActivityName, leadLastActivityDescription) {
                     if(leadEmail){
-                        requestLeadLastActivityUpdate(apiaccesstoken, leadEmail, leadLastActivityName, res);
+                        requestLeadLastActivityUpdate(apiaccesstoken, leadEmail, leadLastActivityName, leadLastActivityDescription, res);
                     }
                 });
             });
