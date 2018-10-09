@@ -13,6 +13,7 @@ module.exports = (req, res) => {
                 getLeadLastActivity.readLeadLastActivity(apiaccesstoken, activitytypes, leadID, function(leadLastActivityName) {
                     if(leadEmail){
                         requestLeadLastActivityUpdate(apiaccesstoken, leadEmail, leadLastActivityName);
+                        res.end('Activity Updated\n');
                     }
                 });
             });
