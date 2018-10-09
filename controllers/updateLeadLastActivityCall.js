@@ -12,8 +12,7 @@ module.exports = (req, res) => {
             getLeadID.getLeadIdByEmail(apiaccesstoken, leadEmail, function(leadID) {
                 getLeadLastActivity.readLeadLastActivity(apiaccesstoken, activitytypes, leadID, function(leadLastActivityName) {
                     if(leadEmail){
-                        requestLeadLastActivityUpdate(apiaccesstoken, leadEmail, leadLastActivityName);
-                        res.end('Activity Updated\n');
+                        requestLeadLastActivityUpdate(apiaccesstoken, leadEmail, leadLastActivityName, res);
                     }
                 });
             });

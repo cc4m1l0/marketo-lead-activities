@@ -14,8 +14,7 @@ module.exports = (req, res) => {
             getLeadID.getLeadIdByEmail(apiaccesstoken, leadEmail, function(leadID) {
                 getLeadLastActivity.readLeadLastActivity(apiaccesstoken, activitytypes, leadID, function(leadLastActivityName) {
                     if(campaignID && leadID){
-                        requestCampaign(apiaccesstoken, campaignID, [leadID], tokens, leadLastActivityName);
-                        res.end('Campaign Requested / Token Updated\n');
+                        requestCampaign(apiaccesstoken, campaignID, [leadID], tokens, leadLastActivityName, res);
                     }
                 });
             });
