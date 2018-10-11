@@ -9,12 +9,12 @@ module.exports = (req, res) => {
     campaignID = req.query.campaignID;
     leadEmail = req.query.leadEmail;
     tokens = [req.query.tokens.split(',')];
-    auth.getAuthToken(function(apiaccesstoken) {
-        getActivityType.readActivityTypes(apiaccesstoken, function(activitytypes) {
-            getLeadID.getLeadIdByEmail(apiaccesstoken, leadEmail, function(leadID) {
-                getLeadLastActivity.readLeadLastActivity(apiaccesstoken, activitytypes, leadID, function(leadLastActivityName) {
+    auth.getAuthToken(function(apiAccessToken) {
+        getActivityType.readActivityTypes(apiAccessToken, function(activityTypes) {
+            getLeadID.getLeadIdByEmail(apiAccessToken, leadEmail, function(leadID) {
+                getLeadLastActivity.readLeadLastActivity(apiAccessToken, activityTypes, leadID, function(leadLastActivityName) {
                     if(campaignID && leadID){
-                        requestCampaign(apiaccesstoken, campaignID, [leadID], tokens, leadLastActivityName, res);
+                        requestCampaign(apiAccessToken, campaignID, [leadID], tokens, leadLastActivityName, res);
                     }
                 });
             });

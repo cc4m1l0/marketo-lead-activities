@@ -1,9 +1,9 @@
 var request = require('request');
 const config = require('config');
 
-const getLeadIdByEmail = (apiaccesstoken, leadEmail, callback) => {
+const getLeadIdByEmail = (apiAccessToken, leadEmail, callback) => {
     const URL = config.get('MARKETO_API') + config.get('MARKETO_API_VERSION') + config.get('LEAD_ENDPOINT')
-    + "?access_token=" + apiaccesstoken
+    + "?access_token=" + apiAccessToken
     + "&filterType=email"
     + "&filterValues=" + leadEmail;
     request.get(URL, (error, response, body) => {
@@ -19,7 +19,7 @@ const getLeadIdByEmail = (apiaccesstoken, leadEmail, callback) => {
 };
 
 module.exports = {
-    getLeadIdByEmail: function (apiaccesstoken, leadEmail, callback) {
-        getLeadIdByEmail(apiaccesstoken, leadEmail, callback);
+    getLeadIdByEmail: function (apiAccessToken, leadEmail, callback) {
+        getLeadIdByEmail(apiAccessToken, leadEmail, callback);
     }
 };

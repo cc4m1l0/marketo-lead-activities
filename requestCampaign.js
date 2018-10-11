@@ -18,10 +18,10 @@ const buildTokensObject = (tokens, leadLastActivityName) => {
     return _tokens;
 }
 
-module.exports = (apiaccesstoken, campaignID, leadID, tokens, leadLastActivityName, res) => {
+module.exports = (apiAccessToken, campaignID, leadID, tokens, leadLastActivityName, res) => {
     console.log('campaign ID / lead ID / tokens / activity Name', campaignID, leadID, tokens[0], leadLastActivityName);
     const URL = config.get('MARKETO_API') + config.get('MARKETO_API_VERSION') + config.get('CAMPAING_ENDPOINT') +
-    campaignID + "/trigger.json?access_token=" + apiaccesstoken;
+    campaignID + "/trigger.json?access_token=" + apiAccessToken;
     _leadIDs = buildLeadIDsObject(leadID);
     _tokens = buildTokensObject(tokens, leadLastActivityName);
     var data = '{ "input":{"leads":['+ _leadIDs +'],"tokens":[]}}"';

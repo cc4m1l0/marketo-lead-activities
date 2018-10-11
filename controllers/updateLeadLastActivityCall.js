@@ -7,12 +7,14 @@ const requestLeadLastActivityUpdate = require('../requestLeadLastActivityUpdate'
 
 module.exports = (req, res) => {
     leadEmail = req.query.leadEmail;
-    auth.getAuthToken(function(apiaccesstoken) {
-        getActivityType.readActivityTypes(apiaccesstoken, function(activitytypes) {
-            getLeadID.getLeadIdByEmail(apiaccesstoken, leadEmail, function(leadID) {
-                getLeadLastActivity.readLeadLastActivity(apiaccesstoken, activitytypes, leadID, function(leadLastActivityName, leadLastActivityDescription) {
-                    if(leadEmail){
-                        requestLeadLastActivityUpdate(apiaccesstoken, leadEmail, leadLastActivityName, leadLastActivityDescription, res);
+    auth.getAuthToken(function(apiAccessToken) {
+        getActivityType.readActivityTypesCustom(apiAccessToken, function(activityTypes, customActivitiesIds) {
+            getLeadID.getLeadIdByEmail(apiAccessToken, leadEmail, function(leadID) {
+                getLeadLastActivity.readLeadLastActivityCustom(apiAccessToken, activityTypes, customActivitiesIds, leadID, function(leadLastActivityName, leadLastActivityDescription) {
+                    if(leadLastActivityName){
+                        requestLeadLastActivityUpdate(apiAccessToken, leadEmail, leadLastActivityName, leadLastActivityDescription, res);
+                    } else {
+                        res.end('No recent activities\n');
                     }
                 });
             });

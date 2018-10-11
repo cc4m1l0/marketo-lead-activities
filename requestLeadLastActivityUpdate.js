@@ -1,10 +1,10 @@
 var request = require('request');
 const config = require('config');
 
-module.exports = (apiaccesstoken, leadEmail, leadLastActivityName, leadLastActivityDescription, res) => {
+module.exports = (apiAccessToken, leadEmail, leadLastActivityName, leadLastActivityDescription, res) => {
     console.log('lead Email / activity Name / activity description', leadEmail, leadLastActivityName, leadLastActivityDescription);
     const URL = config.get('MARKETO_API') + config.get('MARKETO_API_VERSION') + config.get('LEAD_ENDPOINT')
-    + "/?access_token=" + apiaccesstoken;
+    + "/?access_token=" + apiAccessToken;
     var data = '{ "action":"createOrUpdate", "input":[{"email":"' + leadEmail + '","lastActivityLogName":"'+ leadLastActivityName +'","lastActivityLogDescription":"'+ leadLastActivityDescription +'"}]}"';
     var json_obj = data;
     console.log(json_obj);
