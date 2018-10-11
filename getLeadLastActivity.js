@@ -36,6 +36,15 @@ const getActivityTypesCustomIds = (activityTypesCustom, start, end) => {
     return typeids;
 }
 
+const checkIfActivityTypeIDEqualsTo = (activity, id) => {
+    var check = false;
+    const lastActivityTypeId = activity.activityTypeId;
+    if (lastActivityTypeId == id) {
+        check = true;
+    }
+    return check;
+}
+
 const getLastActivityName = (activityTypes, lastActivity) => {
     const lastActivityTypeId = lastActivity.activityTypeId;
     var _activityTypes = activityTypes.result;
@@ -142,13 +151,21 @@ const readLeadLastActivityCustom = (apiAccessToken, activityTypes, customActivit
                 if (completed_requests == number_of_requests) {
                     // All download done, process responses array
                     // console.dir("list of activities: " + JSON.stringify(activities) );
+                    var lastActivity, penultActivity;
                     const sorted_by_date_activities = activities.sort(function(a, b) {
                         a = new Date(a.activityDate);
                         b = new Date(b.activityDate);
                         return a>b ? -1 : a<b ? 1 : 0;
                     });
-                    const lastActivity = sorted_by_date_activities[0];
                     // console.dir("sorted by date activities: " + sorted_by_date_activities);
+                    lastActivity = sorted_by_date_activities[0];
+                    if(sorted_by_date_activities.length > 1) {
+                        penultActivity = sorted_by_date_activities[1];
+                        if(checkIfActivityTypeIDEqualsTo(penultActivity, '2')) {
+                            lastActivity = penultActivity;
+                        }
+                    }
+                    //console.dir("last Activity: " + JSON.stringify(lastActivity));
                     if (lastActivity) {
                         const lastActivityName = getLastActivityName(activityTypes, lastActivity);
                         const lastActivityDescription = lastActivity.primaryAttributeValue;
